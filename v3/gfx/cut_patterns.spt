@@ -1,0 +1,95 @@
+# cut_patterns.spt
+
+# Tiles
+
+PALS palts1a.png
+
+OPEN hud.png
+MAPFILE ..\dev\work\dummy1.h
+LABEL hud
+MAPPED 0, 0, 2, 2, 16, 15
+
+OPEN alltext.png
+LABEL texts
+MAPFILE ..\dev\assets\texts.h
+TEXTS 0, 0, 24, 11
+
+OPEN ts.png
+MAPFILE ..\dev\assets\tiledata.h
+
+LABEL ts0
+PALS palts1a.png
+MAPPED 0, 0, 2, 2, 17, 1
+
+LABEL ts1
+PALS palts1b.png
+MAPPED 0, 2, 2, 2, 17, 1
+
+LABEL ts2
+PALS palts1c.png
+MAPPED 0, 4, 2, 2, 17, 1
+
+LABEL ts3
+PALS palts1d.png
+MAPPED 0, 6, 2, 2, 17, 1
+
+LABEL ts4
+PALS palts1e.png
+MAPPED 0, 8, 2, 2, 17, 1
+
+FILL 4096
+
+# Sprites
+
+RESETPOOL
+
+# Bits
+PALS palss1a.png
+OPEN ss.png
+CHARSET 14, 0, 2, 1
+
+# Cuts
+PALS palcuts1.png
+MAPFILE ..\dev\work\dummysp.h
+LABEL cuts
+OPEN cuts1.png
+MAPPED 0, 0, 2, 2, 16, 15
+
+MAPFILE ..\dev\assets\spritedata.h
+
+# Yun
+OPEN ss.png
+PALS palss1a.png
+LABEL sspl
+METASPRITESET 0, 0, 2, 3, 7, 1, -4, -8 FLIPPED
+
+# Enemies
+LABEL ssen0
+METASPRITESET 0, 3, 2, 2, 4, 1, 0, 0 FLIPPED UPSIDEDOWN
+LABEL ssen1
+METASPRITESET 0, 5, 2, 2, 2, 1, 0, 0 UPSIDEDOWN
+LABEL ssen2
+METASPRITESET 4, 5, 2, 2, 2, 1, 0, 0 FLIPPED UPSIDEDOWN
+LABEL ssen3
+METASPRITESET 0, 7, 2, 2, 4, 1, 0, 0 UPSIDEDOWN
+LABEL ssen4
+METASPRITESET 8, 7, 2, 2, 2, 1, 0 0 FLIPPED UPSIDEDOWN
+
+LABEL ssenfan
+METASPRITESET 8, 5, 2, 2, 2, 1, 0, 0 FLIPPED UPSIDEDOWN
+
+LABEL ssenplat
+METASPRITESET 12, 3, 2, 2, 2, 1, 0, 0
+
+LABEL ssenmc2 RESET
+METASPRITE 8, 3, 2, 2, 0, 0
+LABEL ssenmc3 RESET
+METASPRITE 10, 3, 2, 2, 0, 0 FLIPPED UPSIDEDOWN
+
+# Items & misc
+LABEL ssmisc
+METASPRITESET 0, 9, 2, 2, 8, 2, 0, 0
+
+
+
+FILL 8192

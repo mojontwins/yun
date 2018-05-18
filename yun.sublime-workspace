@@ -1,0 +1,1166 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"hit",
+				"hit_v"
+			],
+			[
+				"PEZ",
+				"PEZON_COUNT_MAX"
+			],
+			[
+				"MONO",
+				"MONOCOCO_COUNTER"
+			],
+			[
+				"ppu",
+				"ppu_wait_nmi"
+			],
+			[
+				"gp",
+				"gp_addr"
+			],
+			[
+				"PLAYER",
+				"PLAYER_VY_JUMP_MAX"
+			],
+			[
+				"PLAY",
+				"PLAYER_VY_FALLING_MAX"
+			],
+			[
+				"sp_",
+				"sp_PrintAtInv"
+			],
+			[
+				"TWO_SETS",
+				"TWO_SETS_MAPPED"
+			],
+			[
+				"TWO_SET",
+				"TWO_SETS_SEL"
+			],
+			[
+				"PSGSFX",
+				"PSGSFXPlay"
+			],
+			[
+				"PSG",
+				"PSGSFXPlay"
+			],
+			[
+				"MS_TYPE_",
+				"MS_TYPE_SINGLE"
+			],
+			[
+				"SG",
+				"SG_setTile"
+			],
+			[
+				"SG_",
+				"SG_setNextTileatXY"
+			],
+			[
+				"MS",
+				"MS_MAX"
+			],
+			[
+				"UNSA",
+				"UNSAFE_SG_copySpritestoSAT"
+			],
+			[
+				"UNS",
+				"UNSAFE_SG_copySpritestoSAT"
+			],
+			[
+				"MS_",
+				"MS_TYPE_EMPTY"
+			],
+			[
+				"pgo",
+				"pgotten_uwol"
+			],
+			[
+				"pgt",
+				"pgtmx_meemaid"
+			],
+			[
+				"PSTAT_",
+				"PSTATE_NAKED"
+			],
+			[
+				"draw_",
+				"draw_game_tile"
+			],
+			[
+				"FAN",
+				"FANTY_MAXV"
+			],
+			[
+				"show_",
+				"show_coins_vs"
+			],
+			[
+				"GP_",
+				"GM_2P_VS"
+			],
+			[
+				"PSTATE",
+				"PSTATE_DEAD"
+			],
+			[
+				"pf",
+				"pflickering"
+			],
+			[
+				"PF",
+				"PFACING_LEFT"
+			],
+			[
+				"A",
+				"TOP_ADJUST"
+			],
+			[
+				"TI_B",
+				"TI_BACKGROUNDS"
+			],
+			[
+				"update",
+				"update_list_index"
+			],
+			[
+				"SMS_setTile",
+				"SMS_setTileatXY"
+			],
+			[
+				"VDPS",
+				"VDPStatusPort"
+			],
+			[
+				"overfl",
+				"VDPSpriteOverflow"
+			],
+			[
+				"fra",
+				"frame_counter"
+			],
+			[
+				"PLAYER_",
+				"PLAYER_GENITAL"
+			],
+			[
+				"PLAYER_HA",
+				"PLAYER_HAS_JUMP"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "v4/dev/crt0-CNROM.s",
+			"settings":
+			{
+				"buffer_size": 4409,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "v4/dev/neslib.s",
+			"settings":
+			{
+				"buffer_size": 12614,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "v4/dev/neslib.h",
+			"settings":
+			{
+				"buffer_size": 7765,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "v4/dev/game.c",
+			"settings":
+			{
+				"buffer_size": 3003,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 42 files for \"safe\"\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\game.h:\n  192  \n  193  #ifdef ENABLE_HOLES\n  194: \tplayer_register_safe_spot ();\n  195  #endif\n  196  \n  ...\n  393  \n  394  \trdb = 0xfb;\n  395: \tm113_safe_change_chr_bank (EXTRA_CHR_ROM);\n  396  \tpal_spr (palssending);\n  397  \tenter_screen (paltsending, screen_event);\n  398  \tdo_screen (32767);\n  399: \tm113_safe_change_chr_bank (BASE_CHR_ROM);\n  400  \n  401  \texit_cleanly ();\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\player.h:\n    4  // Player movement & stuff\n    5  \n    6: #ifdef PLAYER_SAFE\n    7: void player_register_safe_spot (void) {\n    8: \tsafe_prx = prx; safe_pry = pry;\n    9: \tsafe_n_pant = n_pant;\n   10  }\n   11  \n   12: void player_restore_safe_spot (void) {\n   13: \tprx = safe_prx; px = prx << FIX_BITS;\n   14: \tpry = safe_pry; py = pry << FIX_BITS;\n   15: \tn_pant = safe_n_pant;\t\n   16  }\n   17  #endif\n   ..\n  155  \tpry = (signed int) (player_ini_y [level] << 4); py = pry << FIX_BITS;\n  156  \n  157: #ifdef PLAYER_SAFE\n  158: \tplayer_register_safe_spot ();\n  159  #endif\n  160  \t\n  ...\n  210  \tif (pholed) {\n  211  \t\tplayer_reset_movement ();\n  212: \t\tplayer_restore_safe_spot ();\n  213  \t\tpholed = 0;\n  214  \t}\n  ...\n  225  \tif (plife) {\n  226  \t\tplife --;\n  227: \t\tplayer_restore_safe_spot ();\n  228  \t} else pkilled = 1;\n  229  \n  ...\n  503  #ifdef PLAYER_DIE_AND_RESPAWN\n  504  \t\t\t\t\tif (ppossee && !evil_tile_hit) {\n  505: \t\t\t\t\t\tplayer_register_safe_spot ();\n  506  \t\t\t\t\t}\n  507  #endif\t\t\t\t\t\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\printer.h:\n  166  \t// c_chr_rom stores the current level's CHR-ROM page.\n  167  \n  168: \tm113_safe_change_chr_bank (c_chr_rom);\n  169  \n  170  \t#ifdef MAP_FORMAT_PACKED\n  ...\n  257  \t#endif \n  258  \n  259: \tm113_safe_change_chr_bank (cur_bank);\n  260  \n  261  #else\n\n19 matches across 3 files\n\n\nSearching 42 files for \"m113_safe_change_chr_bank\"\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\game.h:\n  393  \n  394  \trdb = 0xfb;\n  395: \tm113_safe_change_chr_bank (EXTRA_CHR_ROM);\n  396  \tpal_spr (palssending);\n  397  \tenter_screen (paltsending, screen_event);\n  398  \tdo_screen (32767);\n  399: \tm113_safe_change_chr_bank (BASE_CHR_ROM);\n  400  \n  401  \texit_cleanly ();\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\printer.h:\n  166  \t// c_chr_rom stores the current level's CHR-ROM page.\n  167  \n  168: \tm113_safe_change_chr_bank (c_chr_rom);\n  169  \n  170  \t#ifdef MAP_FORMAT_PACKED\n  ...\n  257  \t#endif \n  258  \n  259: \tm113_safe_change_chr_bank (cur_bank);\n  260  \n  261  #else\n\n4 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 2499,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "v4/dev/engine/printer.h",
+			"settings":
+			{
+				"buffer_size": 8610,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "v4/dev/nes-CNROM.cfg",
+			"settings":
+			{
+				"buffer_size": 2560,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"file": "v4/dev/crt0-113.s",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/git/nes_work/yun",
+		"/D/git/nes_work/yun/v4",
+		"/D/git/nes_work/yun/v4/dev",
+		"/D/git/nes_work/yun/v4/dev/engine"
+	],
+	"file_history":
+	[
+		"/D/git/nes_work/yun/v4/dev/engine/game.h",
+		"/D/git/nes_work/yun/v4/dev/nes-CNROM.cfg",
+		"/D/perfiles/jcastano/Desktop/playermove_alt.h",
+		"/D/git/nes_work/yun/dev/engine/enemmods/enem_linear.h",
+		"/D/git/nes_work/yun/dev/assets/precalcs.h",
+		"/C/Cosas/git/nes_work/yun/dev/engine/pres.h",
+		"/D/Gity/nes_work/yun/dev/engine/player.h",
+		"/C/Cosas/git/nes_work/yun/dev/engine/enengine.h",
+		"/C/Cosas/git/nes_work/yun/dev/config.h",
+		"/C/Cosas/git/nes_work/yun/dev/engine/player.h",
+		"/C/Cosas/git/nes_work/GoddessR/dev/prg2/assets/precalcs.h",
+		"/C/Cosas/git/nes_work/yun/dev/engine/hotspots.h",
+		"/D/git/NES/yun/dev/config.h",
+		"/D/git/NES/yun/dev/engine/enengine.h",
+		"/D/git/NES/yun/dev/engine/enemmods/enem_pezons.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/hotspots.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/definitions.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/printer.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/config.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/precalcs.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/enengine.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/config.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/ram/bss.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/compile.bat",
+		"/C/Users/jcastano/AppData/Local/Temp/Rar$DR48.640/Force Disruptor/Source/Skeleton.frm",
+		"/C/Users/jcastano/Desktop/prueba.guia.ldif",
+		"/D/Google Drive/Maritrini/dev/NES/yun/ficha/fasebonus.txt",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/strings.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/game.c",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/pres.h",
+		"/C/Users/jcastano/Desktop/7zAAAB4.tmp/script/mscnes.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/work/strings.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/ficha/textos.txt",
+		"/D/Google Drive/Maritrini/dev/NES/PingPing/utils/lzss.c",
+		"/C/Users/jcastano/AppData/Local/Temp/extern.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/general.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/player.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/compile.bat",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/metasprites.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/palettes.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/map/screens.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/screens.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/enemmods/enem_monococo.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/enemmods/enem_pezons.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/enemmods/enem_fanty.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/diario.txt",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/frame.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/enemmods/enem_linear.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/assets/metasprites.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/game.c",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/engine/printer.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/mainloop/flickscreen.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/engine/enengine.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/engine/player.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/mainloop.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/ram/zp.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/m_instruments.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/music.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/sfx/makemusic.bat",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/mus_cuts.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/sfx/m_instruments.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/mus_game2.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dia2.txt",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/engine/general.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/sfx/mus_game1 - copia.txt",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/engine/enemmods/enem_fanty.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/yun/dev/engine/hotspots.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/SMS/yun/dev/yun.asm",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/enemmods/enem_saw.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/bolts.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/neslib.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dia2.txt",
+		"/C/Users/na_th_an/Documents/ldgq1.txt",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/engine/pres.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/compile.bat",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/map/screens.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/game.c",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/engine/enemmods/enem_linear.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/engine/player.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/assets/leveldata.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/assets/strings.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/tileset0.chr",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/dev/work/strings.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/o.txt",
+		"/D/Google Drive/Maritrini/dev/Speccy/MK2/Ninjajar/dev/engine/enems.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/ram/zp.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/simplecoco.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/mapa2.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mainloop.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/prepare_screen.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/engine/fabolee.h",
+		"/D/Google Drive/Maritrini/dev/Speccy/MK2/Ninjajar/dev/engine/bullets.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/spr_logo.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mainloop/pause.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mainloop/hud.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mainloop/flickscreen.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mainloop/hotspots.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/player.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/assets/leveldata.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mus_cuts.s",
+		"/D/Google Drive/Maritrini/dev/NES/yun/sfx/mus_title.txt",
+		"/D/Google Drive/Maritrini/dev/NES/yun/sfx/mus_cuts.txt",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mainloop/cheat.h",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mus_game1.s",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/music.s",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mus_game0.s",
+		"/D/Google Drive/Maritrini/dev/NES/yun/dev/mus_game2.s",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/yun/yun.sublime-project",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/definitions.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/cpc/Sir CPC 2 A/dev/engine.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/Lala/lala.sublime-project",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/neslib.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/game.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/general.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/screens.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/diario.txt",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_pezon.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_update.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_gyrosaw.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_collision.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_final_frog.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/camera.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/player.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_zp.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/title.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/precalcs.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enems.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_linear.h"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 108.0,
+		"where_history":
+		[
+			"D:\\git\\nes_work\\yun\\v4\\dev\\engine",
+			"D:\\git\\nes_work\\yun\\dev",
+			"D:\\git\\nes_work\\yun"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"m113_safe_change_chr_bank",
+			"safe",
+			"hit_v",
+			"attr",
+			"unsigned char attr",
+			"MK1",
+			"en_ud",
+			"& 2",
+			"pice",
+			"propeller",
+			"PEZON",
+			"wait_for",
+			"..\\utils\\mkts.exe in=logo.png pals=palmt.png out=sschr4.bin mode=sprites tsmap=..\\dev\\assets\\spr_logo.h offset=0,0 size=1,1 metasize=6,2 sprorg=0,0 label=spr_mt_logo tmapoffset=119 silent",
+			"fade_in",
+			".\n",
+			"rds",
+			"-nodpcm",
+			"pty",
+			"ptx",
+			"attr",
+			"pty2",
+			"pty1",
+			"ptx2",
+			"ptx1",
+			"cttouched",
+			"60",
+			"amboise_04",
+			"ticker",
+			"_en2_",
+			"_en1_",
+			"_en_",
+			"n",
+			"(n)",
+			"b",
+			"a",
+			"gpitt",
+			"signed int",
+			"x",
+			"fbl",
+			"fbl_ry",
+			"fbl_rx",
+			"x",
+			"fbl_",
+			"FABOLEES",
+			"simplecoco.h",
+			"SPRITE_AD",
+			"en_life",
+			"convey",
+			"hit",
+			"hit//",
+			"game0",
+			"DPCM_ENABLE",
+			"psoff",
+			"FRAME_CNT2",
+			"FT_PITCH_FIX",
+			"*gp_ul ++ = rda; *gp_ul ++ = rda + 1;",
+			"rda = ((((*gp_gen ++) >> 4) + 16) << 2) + col_offs;",
+			"rda = ((((*gp_gen ++) & 15) + 16) << 2) + col_offs;",
+			"(*gp_gen ++) >> 4",
+			"(*gp_gen ++) & 15",
+			"& 15",
+			"*gp_gen ++",
+			",",
+			"psignal",
+			"pad0",
+			"pbutt",
+			"attr",
+			"SET TILE",
+			"DISABLE_HOTSPOTS",
+			"flag",
+			"redraw",
+			"ISEVIL",
+			"IS_EVIL2",
+			"IS_EVIL5",
+			"== 1",
+			"& 1",
+			"== 1",
+			"& 1",
+			"SET_TILE",
+			"SET TILE",
+			"exti",
+			"FIRST_TIME_FLAG",
+			"scr",
+			"SCREEN 14",
+			"ENTERING SCREEN 2",
+			"TEXT",
+			"SCRIPTING",
+			"beepfx",
+			"SCRIPT",
+			"TALISMAN",
+			"$TALISMAN",
+			"FLAG 14",
+			"FLAG 13",
+			"FLAG 12",
+			"FLAG 11",
+			"FLAG 10",
+			"FLAG 9",
+			"FLAG 8",
+			"FLAG 7",
+			"FLAG 6",
+			"FLAG 4",
+			"FLAG 3",
+			"FLAG 2",
+			"FLAG 1",
+			"TWO_SETS",
+			"respawn",
+			"p_killme",
+			"OLD_ENEMS",
+			"CUSTOM",
+			"CSTOM",
+			"CUSTOM",
+			"hud",
+			"key_jump",
+			"ifndef",
+			"31",
+			"30'",
+			"\\",
+			"kill_player",
+			"gpt",
+			"kill_player",
+			"EVIL_ZONE_BEEPS_COUNT",
+			"evil_zone",
+			"game_over",
+			"coin",
+			"start",
+			"hitv",
+			"render",
+			"ticker"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"rds16",
+			"",
+			"cy",
+			"cx",
+			"cy2",
+			"cy1",
+			"cx2",
+			"cx1",
+			"_en3_",
+			"_en2_",
+			"_en1_",
+			"y",
+			"coco_",
+			"COCOS",
+			"game1",
+			"*gp_ul ++ = rda ++; *gp_ul ++ = rda;",
+			"rda = mtile_pattern_offsets [(*gp_gen ++) >> 4] + col_offs;",
+			"rda = mtile_pattern_offsets [(*gp_gen ++) & 15] + col_offs;",
+			"((*gp_gen ++) >> 4) + 16",
+			"((*gp_gen ++) & 15) + 16",
+			">> 4",
+			"(*gp_gen ++) & 15",
+			", ",
+			"pad",
+			"& 12",
+			"& 15",
+			"IS_EVIL",
+			"SET TILE",
+			"FIRST_TIME",
+			"TALISMAN_PIECES",
+			"$TALISMAN_PIECES",
+			"$CANIJA_GONE",
+			"$TALISMAN_4",
+			"$TALISMAN_3",
+			"$TALISMAN_2",
+			"$TALISMAN_1",
+			"$TRAMPA",
+			"$GO_SEE",
+			"$TESORO_MORO",
+			"$ALLPURPOSE",
+			"$ENCANTAMIENTO_PIMIENTO",
+			"$HECHIZO_POSTIZO",
+			"$TALISMAN",
+			"$COINS",
+			"/",
+			"en_an_t",
+			"Uwol",
+			"gp_ms",
+			"p_s",
+			"meemaid",
+			"gp_gen",
+			"meemaid",
+			"//sfx_play",
+			"SG",
+			"if (game_mode != GM_2P_VS) add_to_score",
+			"pcoins_uwol",
+			"_meemaid",
+			"add_to_score_meemaid (",
+			"add_to_score_uwol (",
+			"_meemaid",
+			"//pal_spr",
+			"_meemaid",
+			"y",
+			"_meemaid",
+			"UPDATE",
+			"ADD_UPD",
+			"",
+			"_meemaid",
+			">> 4",
+			"<< 4",
+			"",
+			"_b",
+			"attr_table",
+			"ATTR",
+			"0xff",
+			"0x00",
+			"OAM_BASE_ENEMS",
+			"enems",
+			"gp_tsmbk",
+			"attr (",
+			"ATTR (",
+			"ATTR",
+			"pals=",
+			"_LSB",
+			"_MSB",
+			", ",
+			"SG_",
+			"SATADDRESS",
+			"PNTADDRESS",
+			"SG",
+			"MAX_SPRITES",
+			"[gpit]",
+			"[0]",
+			"_b",
+			"_a,",
+			"0x03",
+			"_pl_",
+			"\\n",
+			"\\u",
+			"\\o",
+			"\\i",
+			"\\e",
+			"\\a",
+			"\\n",
+			"\\u",
+			"\\o",
+			"\\i",
+			"\\e",
+			"\\a",
+			"T.A.R.D.I.S.",
+			"8<",
+			"EXTERN_E",
+			"k2t_code",
+			"k2t_i",
+			"k2t_y",
+			"k2t_x",
+			"k2t_i",
+			"000",
+			"6",
+			"5",
+			"55556666O",
+			"TOCINO MARÍN ALBERTITO",
+			"last",
+			"k2t_length",
+			"k2t_last_key",
+			"k2t_selected",
+			"k2t_color",
+			"..\\..\\"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "v4/dev/crt0-CNROM.s",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4409,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4409,
+								4409
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/R/R.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2804.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "v4/dev/neslib.s",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11008,
+								11057
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/R/R.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 11800.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "v4/dev/neslib.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7765,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7075,
+								7075
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2804.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "v4/dev/game.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3003,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1114,
+								1114
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C Improved/C Improved.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1443.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2499,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										132,
+										136
+									],
+									[
+										215,
+										219
+									],
+									[
+										374,
+										378
+									],
+									[
+										552,
+										556
+									],
+									[
+										585,
+										589
+									],
+									[
+										612,
+										616
+									],
+									[
+										628,
+										632
+									],
+									[
+										652,
+										656
+									],
+									[
+										718,
+										722
+									],
+									[
+										751,
+										755
+									],
+									[
+										797,
+										801
+									],
+									[
+										846,
+										850
+									],
+									[
+										996,
+										1000
+									],
+									[
+										1025,
+										1029
+									],
+									[
+										1149,
+										1153
+									],
+									[
+										1264,
+										1268
+									],
+									[
+										1431,
+										1435
+									],
+									[
+										1607,
+										1611
+									],
+									[
+										1725,
+										1729
+									],
+									[
+										1938,
+										1963
+									],
+									[
+										2097,
+										2122
+									],
+									[
+										2296,
+										2321
+									],
+									[
+										2414,
+										2439
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								2308,
+								2308
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"incomplete_sync": null,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 988.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "v4/dev/engine/printer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5806,
+								5806
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2922.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "v4/dev/nes-CNROM.cfg",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "v4/dev/crt0-113.s",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/R/R.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "yun.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\git\\nes_work\\multicart_INL\\multicart_11.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 205.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

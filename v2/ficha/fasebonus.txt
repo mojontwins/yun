@@ -1,0 +1,15 @@
+Yun surgió de casualidad. Estamos con proyectos más gordos. Nosotros somos de ir avanzando en los proyectos, cambiar de idea a mitad, y descartar muchas cosas. Sets de gráficos, sprites, hasta mapas completos. Pero nunca tiramos nada. Casi todos nuestros proyectos tienen una carpeta "trash" donde vamos metiendo los descartes. A veces los reaprovechamos en proyectos siguientes cuando necesitamos un sprite de malo extra o recordamos que un bloque de piedra nos quedó genial.
+
+Cuando hicimos Sgt. Helmet Zero y Jet Paco a principios de 2014 empezamos un cuarto juego. La idea era tener la funcionalidad básica de MK1 de Spectrum en NES y poder hacer casi de todo. El Helmet cubría el modo genital y un montón de características, el Jet Paco el modo lateral, pero nos faltaba el motor de salto y algunas cosillas más, así que decidimos portar Cheril Perils. La cosa es que entonces nos entró el típico padrastro en el deo y la cosa se quedó ahí.
+
+A finales de 2015 volvimos a la NES con la idea de hacer el Cheril Perils de nuevo, pero bien, con muchas cosas de la versión de Megadrive y más. Luego se nos empezó a ir el bolo y decidimos hacer una especie de super juego de Cheril que juntase sus seis primeras aventuras para Spectrum. El caso es que el material original de Cheril Perils que hicimos a principios de 2014 se abandonó por completo.
+
+A principios de este año, cogimos ese Cheril Perils original abandonado y empezamos a cambiar cosas. Le pusimos un sprite muy chulo de una demonia que habíamos descartado de uno de los juegos que estamos preparando (que se llama, por cierto, Wo Xiang Niào Niào). Anjuel pintó algunos sprites chulos y luego rescatamos una fase descartada del Cheril tocho, le dimos la vuelta, cambiamos los tiles... 
+
+Al principio el juego se jugaba como el Cheril Perils de Spectrum (recordemos que viene de un port de ese juego): había que ir saltando en los bichos. La física era horrenda, por cierto, y el juego bastante aburrido. Tras cambiar la física y hacer a la demonia más manejable, se nos ocurrió recurrir al Bubble Bobble para encontrar una forma más divertida de matar.
+
+Luego el tema se convirtió en un "a ver cuántas cosas podemos meter en los 32K de la NROM y sus 8K para gráficos". Constantemente, cambiábamos cosas en el motor para que ocupase menos, y llenábamos el espacio liberado con nuevas características. Llegamos al Verkami con la ROM llena y decidimos parar ahí. La idea era sacar el juego tras el Verkami, pero entonces vimos que podíamos apretar un poco más las tuercas y liberar más espacio cambiando como se organizaban algunos recursos del juego. A lo tonto, y casi milagrosamente, liberamos casi 1.5Kb donde metimos un nuevo tipo de enemigo... ¡y todo un modo oculto de juego!
+
+No vamos a desvelar el modo oculto a menos que nos escribáis con pruebas de que os habéis terminado el juego. Bueno, sí lo haremos: cuando recibamos varias de estas pruebas, desvelaremos el secreto para todo el mundo. Sólo os puedo decir que es un añadido MUY chulo.
+
+¡Ah! Y preparamos una versión para Master System que tendrá un par de fases extra y cosas muy bonitas.

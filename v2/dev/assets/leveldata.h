@@ -1,0 +1,10 @@
+const unsigned char * const l_c_map [] = { map_0_tiles, map_1_tiles, map_2_tiles };
+const unsigned char * const l_c_locks [] = { map_0_locks, map_1_locks, map_2_locks };
+const unsigned char l_c_max_bolts [] = { N_BOLTS_0, N_BOLTS_1, N_BOLTS_2 };
+const unsigned char * const l_c_enems [] = { enems_0, enems_1, enems_2 };
+const unsigned char * const l_c_hotspots [] = { hotspots_0, hotspots_1, hotspots_2 };
+const unsigned char * const l_c_pal_bg [] = { mypal_game_bg0, mypal_game_bg1, mypal_game_bg2, mypal_game_bg3, mypal_game_bg4, mypal_game_bg5 };
+const unsigned char * const l_c_pal_fg [] = { mypal_game_fg0, mypal_game_fg1, mypal_game_fg2, mypal_game_fg3, mypal_game_fg4, mypal_game_fg5 };
+const unsigned char l_tmap_level_offset [] = { 0, 16, 32 };
+const unsigned char l_n_pant [] = { 20, 21, 23 };
+const unsigned char l_max_objs [] = { MAX_HOTSPOTS_TYPE_3_0, MAX_HOTSPOTS_TYPE_3_1, MAX_HOTSPOTS_TYPE_3_2 };

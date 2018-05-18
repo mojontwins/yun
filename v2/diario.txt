@@ -1,0 +1,229 @@
+20160404
+========
+
+Soy hostia. Como esto iba a ser una mierda rápida no he hecho diario. Y ahora que está el juego medio terminado, me doy cuenta de que hubiese molado haberlo hecho.
+
+Este juego lleva una mezcla de versiones de los MK1 que lleva Cheril, con algunas partes adaptadas, otras simplificadas. Ejecuta lo que iba a ser el Babushka Zvezda con otros gráficos, pero me flipé y le he metido de todo. Tiene tres fases y cada una lleva cosas chulas. 
+
+Ahora necesito esto un poco porque se me ha ocurrido una última cosa que meterle y quiero diseñarla para ver si es posible hacerla con "ná y meno" de código.
+
+El Mono Que Aparece, Tira Un Coco, Y Se Mete Paentro
+----------------------------------------------------
+
+En realidad tenemos aquí dos cosas: el coco, que debe ser un ente que se cree dinámicamente, y el mono. Por simplificar y dado que estamos apretados apretados vamos a poner que, aunque haya varios monos en pantalla, solo pueda haber un coco. Pondré que el coco vaya medio rápido para compensar.
+
+El Coco
+-------
+
+- El coco se crea en (x, y) = posición del mono (con ajusticos para que quede bien). Se trata de un único sprite (un patrón de 8x8).
+- Lo suyo es que el coco vaya "hacia tí". La putada de esto es que necesito varias cosas: en primer lugar, meter la función de distancia. En segundo lugar, usar una fórmula que implica multiplicaciones y divisiones. En este juego no importa que se salte un frame de vez en cuando, pero me echa para atrás por el tema del espacio. Todo suma.
+- El coco va avanzando hasta que sale de la pantalla o te da. Paso de colisión.
+
+El Mono Que Aparece
+-------------------
+
+- Se crea en (x1, y1). Tiene una variable de estado que reaprovecharé en una de las que no se usa, como x2, y un contador en y2. 
+- Los estados son:
+  - 0 Dentro, esperando N0. Sale.
+  - 1 Fuera, esperando N1. Al final tira un coco.
+  - 2 Fuera, esperando N2. Vuelve a 0.
+
+- N2 es siempre 4 segundos (200). N1 y N2 varían entre 1 y 2 segundos (50-100).
+- El fabolee solo le da al mono cuando está fuera. Entonces pasa al estado ud y cae normalmente. 
+- Para quitarme de problemas, el mono morirá al caer. Cuando golpee suelo, kaput.
+
+Y ahora me voy a casa.
+
+20160405
+========
+
+Para el mono necesitaré dos de los cells para sprites, correspondientes a, por ejemplo, el enemigo número 3 de la fase de bosque. Esto significa que tendré que revisar todo el nivel para encontrar los enemigosd de tipo 3 y sustituirlos.
+
+Los cells deben ser bicho apareciendo, bicho fuera. En el nivel dejaré agujeros en los tiles de fondo para que no quede mal. Necesito un verde igual al de las hojas de fondo en una de las paletas. Voy a apañar esto antes de seguir.
+
+~~
+
+Palette arrangement
+
+Palette 0: player (can be reused, of course)
+Palette 1: fabolee. (can be reused, of course)
+Palette 2: NO/explosion (can be reused, of course)
+Palette 3: Free. 
+
+Usaré la paleta 3 para esto en el bosque. Aprovecharé para hacer bien las otras paletas... Aunque es tontería, hasta que no tenga los enemigos definitivos. 
+
+~~ 
+
+20160406
+========
+
+Ya están los monococos. Voy a poner algunos por el mapa, arreglo el marcador, e intento decidir el orden de las fases.
+
+dia2.txt
+
+20160419
+========
+
+Parece que se ha perdido el diario del juego. Luego miraré en las mierdas de Google Drive a ver si aparece por algún sitio.
+
+Cosas que veo y que habría que arreglar: 
+
+- Parece que el sprite de la llave aparece corrupto. Seguramente sea algún problema en la conversión. [X]
+- Ver qué ocurre al cambiar de fase. Asegurarse de que se reinician bien todos los estados de todos los enemigos, que parece que haya algo rarow [X]
+- Parece que no se cuentan bien los enemigos, he hecho STAGE CLEAR y me quedaba 1 en la fase 1. <-- meter las cuentas de enemigos a manopla, como antes. <-- he hecho un cambio en como se contabilizan las muertes durante el juego que ha simplificado levemente una parte, a ver si con eso es suficiente.
+- "stage clear" aparece feúno. Meterlo en un cuadro de tiles vacíos (32, por ej.)
+- Eliminar la plataforma diagonal al principio de la fase 2, queda rara. [X]
+- Dar una vida extra al completar la fase. [X]
+- Corregir la pantalla fija de game over, la sombra de los bidones está mal. [X]
+- No me gusta la colisión con la parte superior del mapa. Voy a cambiar el mapa, es tontería meter casos extra para algo tan fácilmente evitable. [X]
+- Enemigos que desaparecen por la parte inferior de la pantalla al caer ¿cabrá una detección y un reposicionamiento en .y1, con .ud desactivado? [X]
+
+20160420
+========
+
+Más cosas, gracias Wan.
+
+- Revisar las cintas transportadoras, que solo empujan a la izquierda. [X].
+- Los cocos no respetan el estado parpadeante de Yun. [X].
+- El NO! se queda en pantalla al cambiar de pantalla. <- Simplificarlo. Usa bandera y contador, vale con contador. [X].
+
+20160422
+========
+
+La fase 2 es totalmente pasable :)
+Corrigiendo estas cosas que he visto:
+
+- Cuando eliminas un cerrojo, se hace usando el tile 0 cuando debería usarse el primer tile de cada fase (que es el 0 de cada subtileset). [X]
+- Cuando apareces por la parte superior de la pantalla en una pantalla con fanty y te quedas en una plataforma pegado al borde superior, el fanty se queda pillao en la parte superior de la pantalla y aunque bajes no te persigue. Tengo que mirar esto, creo que sé qué pasa. [X]
+
+Hoy me he puesto a probar la tercera y última fase y, aunque todo parecía ir muy bien, he descubierto otro bug:
+
+- Tengo programado a los monos para que, cuando están cayendo atrapados por una burbuja, mueran al contacto con un tile. También programé que, en el caso de que la burbuja reviente antes de que el mono golpée algún tile, se muriese igual... Pero esto está mal. No se muere. [X]
+
+Otra cosa que quiero cambiar. No es un bug, pero quedará mejor...
+
+- Ahora, si un enemigo está en una burbuja y sale por la parte inferior de la pantalla, vuelve a aparecer en su posición original, activo. Creo que mejor me lo cargo si sale por la parte inferior de la pantalla y a CASCAL. [X]
+
+otro día --- qué mal, he dejao esto abandonado de la leche. Pero bueno, el juego está completo, con mil cosas, super pulido, todo funciona, y me encanta. Una tarea de reaprovechamiento de mierda descartada genial. Me ha encantado el proceso y el concepto.
+
+20160614
+========
+
+Revisitando. Aunque la supuesta versión de Verkami (que se dará como regalo exclusivo, o no, porque con esto nunca me queda nada claro) ya se mandó a planchar, lo revisito para arreglar cosas y me encuentro con que puedo liberar algo de espacio en ROM reorganizando cosas. De 100% de ocupación he pasado a tener unos 600 bytes libres. Y sigo mirando. Como esto siga así, meto alguna mierda más :D. Todo esto mientras preparamos una versión de SMS que está quedando cojonut de bonica.
+
+~~
+
+Optimizando, optimizando he liberado más de 1Kb, lo que está muy bien, pero he introducido alguna historia que:
+
+- Algunos enemigos se quedan inmóviles. Ver cuándo. ver por qué.
+- Las plataformas no te detienen si vas muy follao cayendo. Lo cambio ahora.
+
+Pero me voy a fregal ¡es tardísimo!
+
+20160615
+========
+
+Ya lo solucioné. Era una cagada hecha con manazas en una pequeña optimización en la carga de los enemigos de la pantalla. Aprovecho para arreglar la música. La super marca de 1260 bytes libres baja bastante, por cierto, porque lo que le pasaba a la música es que (por alguna razón) no estaba exportada completa y hacía un loop mal. O algo así. Voy a ver en cuanto estoy, miro de arreglar otra cosa, y sigo pensando en qué meter. Mientras tanto, mucho curro y isshokuta.
+
+~
+
+1212 bytes libres. Eso no está nada mal. Seguro que hay algo más que puede recortarse, pero creo que eso me vale para MUCHAS cosas.
+
+~~
+
+Um - he visto otra cosa que puedo cambiar: la colisión con los hotspots se detecta usando una función especial cuando creo que podría hacerse usando la función de colisión general. Voy a probar, que ahorraré unos bytes más. -> 1395. La hostia puta.
+
+~~~~ 
+
+Lluvia de ideas para ver si pongo algo exclusivo en esta versión de NES, veamos:
+
+- Me molaría meter aquí tambien a Limite. Vale que no tenga juego, así que mola que sea siempre un personaje oculto en otros juegos o que haga cameos (como en Ramiro, que es la voz de Ultratumba y se le menciona mil veces) [por cierto, tengo que darle un repaso].
+- Habría que ver cómo funcionar. El tema está en que habría que cambiar el objetivo del juego, puesto que Limite no hostia ni puede matar. Lo suyo sería que esto se convirtiese en un juego de recolección. Como sí o sí tengo que tener hotspots en todas las pantallas, puedo definir la posición también de los que valen 0, y dibujar un objeto que recoger ahí en el modo límite.
+- Un problema gordo es que limite no puede volar, y esto es necesario para acceder a algunas partes del mapa. ¿Cómo podría solucionar esto? Podría implementar propellers... Pero creo que ya va a ser mucha tela para 1400 bytes escasos ¿no?
+
+Uf, a lo mejor es mucha tela. Necesito:
+
+- Variable game_mode. [X]
+- Lanzar Fabolees solo si game_mode != LIMITE. [X]
+- Meter propellers. [X] Uno por pantalla, definibles con hotspots [X], por ejemplo, solo aparecen con game_mode == LIMITE. [X]
+- Planeo (con game_mode == LIMITE).
+- Objetos recogiscibles. [X]
+
+Lo más sencillo es extender los hotspots:
+
+1 llave
+2 recarga
+3 objeto
+4 propeller
+
+Calculando rápidamente, si usamos 1 solo cell para propeller, necesito bastante memoria para los metasprites: Contando izquierda y derecha, son 14 cells para limite, con 25 bytes por cada cell más 28 bytes de punteros, lo que suman 25*14+28 = 378 bytes. Además, 17 bytes de cada cell para los nuevos hotspots más 4 bytes de puntero suman 38 bytes más. Se me pone en más de 400.
+
+Bueno, no es problema seguir diseñando. A unas malas podría usar el sprite de Yun con otra paleta y añadir uno de planear.
+
+Por lo pronto, se me ha ocurrido que podría rascar algunos bytes más si uso el rollo dinámico que empleo en los juegos modernos para actualizar el update_list usando un puntero.
+
+Lo que no sé es ¿qué usa neslib para saber hasta donde tiene que actualizar? No recuerdo como era ¿un valor fijo? Es que es lo que me está obligando a tener que borrar el UL todas las veces. Quizá no sea descabellado modificar esta parte de neslib para que use un marker de finalización que bien podría ser 0xff.
+
+Sí, set_vram_update toma un valor para saber cuánto hay que actualizar. Voy a ver si puedo cambiar esto :)
+
+Apenas he ahorrado unos bytes, pero ahora la neslib vieja es levemente más rápida (como si eso sirviese de algo).
+
+~~ 
+
+A falta de implementar los propellers y el planeo (lo más gordo), me quedan 1319, vamos bien (esto incluye ya los metasprites para los dos tipos nuevos de hotspots).
+
+~~
+
+No recuerdo bien como implementé el propeller antes, pero se me ocurre esta forma: cuando se están colocando los hotspots, detectar el propeller. Cuando esto ocurre, empezar a marcar con comportamiento "128" los tiles sobre el propeller, hasta encontrar un tile con comportamiento distinto de 0. [X]
+
+Luego, en la función de movimiento, detectar y hacer flotar. [X]
+
+Para conseguir que esto vaya mejor, tengo que cambiar el orden de las coordenadas del hotspot de XY packed a YX packed.
+
+Me quedan: 1232 bytes libres. Vamos de PUTA MADRE.
+
+~~ 
+
+Voy a meter el volar! Pero antes, schokolara. Ok. Ahora, a metel. Metido. ¿Caben los cells en los patrones? ¡Sí! Me lo he ventilado en 36 patrones. Aún quedan 9 patrones libres para algo extra si cabe. Jojojo, cómo estoy aprentando, qué bien me lo paso. Tengo que recordar cambiar la paleta en modo limite: $1c $24 $3d
+
+20160617
+========
+
+Al final terminé de meter a limite, hice algunos cambios, optimicé aún más, añadí nuevas paletas para todas las fases en modo límite, activé que se pudiera pulsar ABAJO+B+A en la pantalla de título para activar el modo límite, hice fullerías, probé la fase 1 completa, y me quedé apañando la fase 2. He tenido que mover algunas cosas de sitio y apañar una ruta nueva de escape para límite de la zona central del mapa, así que tendré que volver a jugar con Yun para comprobar que no he cagado nada.
+
+Además, he terminado cambiando otras cosas que además de ganar ciclos precalculando me han ahorrado bytes, con lo que vuelvo a tener más de 640 bytes y voy a meter a Zurully para la fase del desierto. Es lo que haré ahora.
+
+En cuanto vea que voy a tener bastantes horas seguidas de tiempo de casa me liaré con la versión de SMS, que en este momento tiene el motor al 100%. Quiero empezar a redibujar el desierto. O quizá me ponga a hacer la fase extra que tendrá esta versión. También me rondan las ganas de adaptar a SG-1000, pero creo que eso lo dejaré para cuando estén las otras listas mejor.
+
+¡Voy con Zurully!
+
+~~ 
+
+Recordemos pezones:
+
+en_x, en_y -> posición a pixel, para colisión y render.
+enf_y, enf_vy -> controlan el salto.
+en_y1 -> posición original.
+en_my -> tiempo de espera.
+en_mx -> contador.
+en_r -> estado.
+
+El tiempo de espera se calcula en base a una constante PEZON_WAIT sumándole el valor que viene en "S" (el valor del atributo del colocador) multiplicado por 8.
+
+20160618
+========
+
+Quedan algunos bytes pero creo que los utilizaré en pulir un poco las aristas.
+
+20160621
+========
+
+Fases 1 y 2 pasables en modo límite, voy con la fase 3.
+Glitch en Zurully: recuerda la posición al cambiar de pantalla pero no el estado, y queda raro. Olvidar posición. Arreglo en cerocoma.
+Los fantasmas tienen que acelerar más despacio en en modo limite, porque si no es casi imposible. Tengo que mover a un par, por cierto.
+
+20160629
+========
+
+Todo listo y escamondao. Voy a usar el espacio que tengo para darle un poco más de age al final del juego. Ya tenemos argumento, así que vamos a darle frawn. Necesito liberar 4 patrones para un sprite de Fugu. Let's go!
+

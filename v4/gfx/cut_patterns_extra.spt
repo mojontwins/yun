@@ -1,0 +1,29 @@
+# cut_patterns_extra.spt
+
+# Tiles
+
+PALS paltsending.png
+
+OPEN font.png
+CHARSET 0, 0, 32, 2
+
+OPEN ending_ts.png
+MAPFILE ..\dev\work\dummy_ending_0.h
+LABEL dummy_ending_0
+MAPPED 0, 0, 2, 2, 16, 15
+
+FILL 4096
+
+# Sprites
+
+RESETPOOL
+
+PALS palssending.png
+
+OPEN ending_spr.png
+MAPFILE ..\dev\assets\spritedata_extra.h
+LABEL ssending
+SKIPEMPTY
+METASPRITE 0, 0, 4, 4, 0, 0
+
+FILL 8192
