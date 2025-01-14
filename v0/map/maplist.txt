@@ -1,0 +1,1 @@
+level0.map,10,2,15,prefix=MAP_00,nodecos
