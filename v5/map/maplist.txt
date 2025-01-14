@@ -1,0 +1,8 @@
+level0.map,4,6,15,1
+level1.map,4,6,15,1
+level2.map,4,6,15,0
+level3.map,12,2,15,1
+level4.map,3,4,99,0
+level5.map,6,4,15,0
+level6.map,6,4,15,1
+level7.map,9,3,99,0

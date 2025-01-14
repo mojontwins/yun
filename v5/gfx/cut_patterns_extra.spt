@@ -1,0 +1,51 @@
+# cut_patterns_extra.spt
+
+# Tiles
+
+OPEN font.png
+PALS paltsending.png
+CHARSET 0, 0, 32, 2
+
+MAPFILE ..\dev\work\dummy_ending_0.h
+
+OPEN ending_ts.png
+PALS paltsending.png
+LABEL dummy_ending_0
+MAPPED 0, 0, 2, 2, 16, 15
+
+OPEN endingcuts.png
+PALS paltsT.png
+LABEL endingcuts
+MAPPED 0, 0, 2, 2, 16, 15
+
+OPEN tsstars.png
+PALS palts1A.png
+LABEL tsstars
+MAPFILE ..\dev\assets\tiledata_extra.h
+MAPPED 0, 0, 2, 2, 2, 1
+
+FILL 4096
+
+# Sprites
+
+RESETPOOL
+
+MAPFILE ..\dev\assets\spritedata_extra.h
+
+OPEN ss.png
+PALS palss1a.png
+CHARSET 14, 6, 2, 1
+
+OPEN ending_spr.png
+PALS palssending.png
+LABEL ssending
+SKIPEMPTY
+METASPRITE 0, 0, 4, 4, 0, 0
+
+OPEN endingcuts_spr.png
+PALS palss1A.png
+LABEL ssendingb
+SKIPEMPTY
+METASPRITESET 0, 0, 2, 3, 3, 1, 0, 0
+
+FILL 8192
