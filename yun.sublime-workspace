@@ -160,76 +160,18 @@
 	"buffers":
 	[
 		{
-			"file": "v4/dev/crt0-CNROM.s",
+			"file": "v5/dev/engine/fabolee_int.h",
 			"settings":
 			{
-				"buffer_size": 4409,
-				"encoding": "UTF-8",
+				"buffer_size": 3633,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "v4/dev/neslib.s",
+			"file": "v5/dev/assets/precalcs.h",
 			"settings":
 			{
-				"buffer_size": 12614,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "v4/dev/neslib.h",
-			"settings":
-			{
-				"buffer_size": 7765,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "v4/dev/game.c",
-			"settings":
-			{
-				"buffer_size": 3003,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 42 files for \"safe\"\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\game.h:\n  192  \n  193  #ifdef ENABLE_HOLES\n  194: \tplayer_register_safe_spot ();\n  195  #endif\n  196  \n  ...\n  393  \n  394  \trdb = 0xfb;\n  395: \tm113_safe_change_chr_bank (EXTRA_CHR_ROM);\n  396  \tpal_spr (palssending);\n  397  \tenter_screen (paltsending, screen_event);\n  398  \tdo_screen (32767);\n  399: \tm113_safe_change_chr_bank (BASE_CHR_ROM);\n  400  \n  401  \texit_cleanly ();\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\player.h:\n    4  // Player movement & stuff\n    5  \n    6: #ifdef PLAYER_SAFE\n    7: void player_register_safe_spot (void) {\n    8: \tsafe_prx = prx; safe_pry = pry;\n    9: \tsafe_n_pant = n_pant;\n   10  }\n   11  \n   12: void player_restore_safe_spot (void) {\n   13: \tprx = safe_prx; px = prx << FIX_BITS;\n   14: \tpry = safe_pry; py = pry << FIX_BITS;\n   15: \tn_pant = safe_n_pant;\t\n   16  }\n   17  #endif\n   ..\n  155  \tpry = (signed int) (player_ini_y [level] << 4); py = pry << FIX_BITS;\n  156  \n  157: #ifdef PLAYER_SAFE\n  158: \tplayer_register_safe_spot ();\n  159  #endif\n  160  \t\n  ...\n  210  \tif (pholed) {\n  211  \t\tplayer_reset_movement ();\n  212: \t\tplayer_restore_safe_spot ();\n  213  \t\tpholed = 0;\n  214  \t}\n  ...\n  225  \tif (plife) {\n  226  \t\tplife --;\n  227: \t\tplayer_restore_safe_spot ();\n  228  \t} else pkilled = 1;\n  229  \n  ...\n  503  #ifdef PLAYER_DIE_AND_RESPAWN\n  504  \t\t\t\t\tif (ppossee && !evil_tile_hit) {\n  505: \t\t\t\t\t\tplayer_register_safe_spot ();\n  506  \t\t\t\t\t}\n  507  #endif\t\t\t\t\t\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\printer.h:\n  166  \t// c_chr_rom stores the current level's CHR-ROM page.\n  167  \n  168: \tm113_safe_change_chr_bank (c_chr_rom);\n  169  \n  170  \t#ifdef MAP_FORMAT_PACKED\n  ...\n  257  \t#endif \n  258  \n  259: \tm113_safe_change_chr_bank (cur_bank);\n  260  \n  261  #else\n\n19 matches across 3 files\n\n\nSearching 42 files for \"m113_safe_change_chr_bank\"\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\game.h:\n  393  \n  394  \trdb = 0xfb;\n  395: \tm113_safe_change_chr_bank (EXTRA_CHR_ROM);\n  396  \tpal_spr (palssending);\n  397  \tenter_screen (paltsending, screen_event);\n  398  \tdo_screen (32767);\n  399: \tm113_safe_change_chr_bank (BASE_CHR_ROM);\n  400  \n  401  \texit_cleanly ();\n\nD:\\git\\nes_work\\yun\\v4\\dev\\engine\\printer.h:\n  166  \t// c_chr_rom stores the current level's CHR-ROM page.\n  167  \n  168: \tm113_safe_change_chr_bank (c_chr_rom);\n  169  \n  170  \t#ifdef MAP_FORMAT_PACKED\n  ...\n  257  \t#endif \n  258  \n  259: \tm113_safe_change_chr_bank (cur_bank);\n  260  \n  261  #else\n\n4 matches across 2 files\n",
-			"settings":
-			{
-				"buffer_size": 2499,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "v4/dev/engine/printer.h",
-			"settings":
-			{
-				"buffer_size": 8610,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "v4/dev/nes-CNROM.cfg",
-			"settings":
-			{
-				"buffer_size": 2560,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "",
-			"file": "v4/dev/crt0-113.s",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 0,
+				"buffer_size": 3612,
 				"line_ending": "Windows"
 			}
 		}
@@ -266,13 +208,23 @@
 	},
 	"expanded_folders":
 	[
-		"/D/git/nes_work/yun",
-		"/D/git/nes_work/yun/v4",
-		"/D/git/nes_work/yun/v4/dev",
-		"/D/git/nes_work/yun/v4/dev/engine"
+		"/D/git/Yun",
+		"/D/git/Yun/v5",
+		"/D/git/Yun/v5/bin",
+		"/D/git/Yun/v5/dev",
+		"/D/git/Yun/v5/dev/assets",
+		"/D/git/Yun/v5/dev/engine"
 	],
 	"file_history":
 	[
+		"/D/temp/nath_mojon-nes_work-fbf20c9402e6/yun/dev/game.c",
+		"/D/git/Yun/v4/dev/nes-CNROM.cfg",
+		"/D/git/Yun/v4/dev/crt0-113.s",
+		"/D/git/Yun/v4/dev/crt0-CNROM.s",
+		"/D/git/Yun/v4/dev/game.c",
+		"/D/git/Yun/v4/dev/engine/printer.h",
+		"/D/git/Yun/v4/dev/neslib.h",
+		"/D/git/Yun/v4/dev/neslib.s",
 		"/D/git/nes_work/yun/v4/dev/engine/game.h",
 		"/D/git/nes_work/yun/v4/dev/nes-CNROM.cfg",
 		"/D/perfiles/jcastano/Desktop/playermove_alt.h",
@@ -392,19 +344,11 @@
 		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_pezon.h",
 		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_update.h",
 		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_gyrosaw.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_collision.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_final_frog.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/camera.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/player.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_zp.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/title.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/precalcs.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enems.h",
-		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_linear.h"
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_collision.h"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -694,322 +638,62 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "v4/dev/crt0-CNROM.s",
-					"semi_transient": false,
+					"file": "v5/dev/engine/fabolee_int.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 4409,
+						"buffer_size": 3633,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4409,
-								4409
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/R/R.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2804.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "v4/dev/neslib.s",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12614,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11008,
-								11057
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/R/R.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 11800.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "v4/dev/neslib.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7765,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7075,
-								7075
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2804.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "v4/dev/game.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3003,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1114,
-								1114
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1443.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2499,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										132,
-										136
-									],
-									[
-										215,
-										219
-									],
-									[
-										374,
-										378
-									],
-									[
-										552,
-										556
-									],
-									[
-										585,
-										589
-									],
-									[
-										612,
-										616
-									],
-									[
-										628,
-										632
-									],
-									[
-										652,
-										656
-									],
-									[
-										718,
-										722
-									],
-									[
-										751,
-										755
-									],
-									[
-										797,
-										801
-									],
-									[
-										846,
-										850
-									],
-									[
-										996,
-										1000
-									],
-									[
-										1025,
-										1029
-									],
-									[
-										1149,
-										1153
-									],
-									[
-										1264,
-										1268
-									],
-									[
-										1431,
-										1435
-									],
-									[
-										1607,
-										1611
-									],
-									[
-										1725,
-										1729
-									],
-									[
-										1938,
-										1963
-									],
-									[
-										2097,
-										2122
-									],
-									[
-										2296,
-										2321
-									],
-									[
-										2414,
-										2439
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								2308,
-								2308
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"incomplete_sync": null,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 988.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "v4/dev/engine/printer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8610,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5806,
-								5806
-							]
-						],
-						"settings":
-						{
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2922.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 6,
-					"file": "v4/dev/nes-CNROM.cfg",
-					"semi_transient": false,
+					"buffer": 1,
+					"file": "v5/dev/assets/precalcs.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 2560,
+						"buffer_size": 3612,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1083,
+								1083
 							]
 						],
 						"settings":
@@ -1017,46 +701,14 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 624.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "v4/dev/crt0-113.s",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/R/R.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1064,7 +716,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1100,6 +752,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.SFTP":
+	{
+		"height": 0.0
+	},
 	"output.exec":
 	{
 		"height": 100.0
@@ -1116,7 +772,7 @@
 	"project": "yun.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1150,7 +806,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
